@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Nishanth Div List</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8ee;
+            margin: 25px;
+        }
+
+        h1 {
+            color: darkorange;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid orange;
+            background-color: white;
+            min-height: 80px;
+        }
+
+        .divlist {
+            background-color: lightblue;
+            border: 2px solid darkblue;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 18px;
+        }
+
+        #count {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Nishanth builds list with divs</h1>
+
+    <p>
+        Enter an item and use the buttons
+        to add or remove elements from the list.
+    </p>
+
+    <input type="text"
+           id="itemInput"
+           placeholder="Enter an item">
+
+    <br>
+
+    <button onclick="addEnd()">Add end</button>
+
+    <button onclick="addFront()">Add front</button>
+
+    <button onclick="removeEveryOther()">Remove</button>
+
+    <button onclick="shuffle()">Bonus: Shuffle</button>
+
+    <p id="count">Number of items: 3</p>
+
+    <div class="flex-container" id="container">
+        <div class="divlist">Item 1</div>
+        <div class="divlist">Item 2</div>
+        <div class="divlist">Item 3</div>
+    </div>
+
+    <script>
+
+        // Create a new DIV element
+        function createItem() {
+
+            let newElement = document.createElement("div");
+
+            let input = document.getElementById("itemInput");
+
+            let value = input.value.trim();
+
+            if (value === "") {
+                value = "New Item";
+            }
+
+            newElement.innerHTML = value;
+            newElement.className = "divlist";
+
+            input.value = "";
+
+            return newElement;
+        }
+
+        // Add an element to the end
+        function addEnd() {
+
+            let container =
+                document.getElementById("container");
+
+            let newElement = createItem();
+
+            container.appendChild(newElement);
+
+            updateCount();
+        }
+
+        
+        function addFront() {
+
+            let container =
+                document.getElementById("container");
+
+            let newElement = createItem();
+
+            container.insertBefore(
+                newElement,
+                container.firstChild
+            );
+
+            updateCount();
+        }
+
+        
+        function removeEveryOther() {
+
+            let divListItems =
+                document.getElementsByClassName("divlist");
+
+            let length = divListItems.length;
+
+            if (length === 0) {
+                return;
+            }
+
+            
+            let items = Array.from(divListItems);
+
+            for (let i = 0; i < length; i += 2) {
+                items[i].remove();
+            }
+
+            updateCount();
+        }
+
+       
+        function updateCount() {
+
+            let divListItems =
+                document.getElementsByClassName("divlist");
+
+            document.getElementById("count").innerHTML =
+                "Number of items: " + divListItems.length;
+        }
+
+        
+        function shuffle() {
+
+            let container =
+                document.getElementById("container");
+
+            let items =
+                Array.from(
+                    container.getElementsByClassName("divlist")
+                );
+
+            if (items.length < 2) {
+                alert("Need at least two items to shuffle.");
+                return;
+            }
+
+            // Generate two different random positions
+            let first =
+                Math.floor(Math.random() * items.length);
+
+            let second =
+                Math.floor(Math.random() * items.length);
+
+            while (first === second) {
+                second =
+                    Math.floor(Math.random() * items.length);
+            }
+
+            // Exchange the positions of the two DIVs
+            let firstItem = items[first];
+            let secondItem = items[second];
+
+            let placeholder =
+                document.createElement("div");
+
+            container.replaceChild(placeholder, firstItem);
+            container.replaceChild(firstItem, secondItem);
+            container.replaceChild(secondItem, placeholder);
+
+            updateCount();
+        }
+
+    </script>
+
+</body>
+</html>
