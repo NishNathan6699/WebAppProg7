@@ -37,6 +37,18 @@
             object-fit: cover;
             border: 2px solid green;
             border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .help-button {
+            color: blue;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #gameStatus {
+            color: red;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -56,69 +68,224 @@
 
     <p id="score">Score is zero.</p>
 
-    <p>Click for help.</p>
+    <p class="help-button" onclick="help()">
+        Click for help.
+    </p>
 
     <p id="help">Help report</p>
+    <p id="gameStatus"></p>
 
     <!-- Row 1 -->
     <div class="game-row">
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
+        <div class="game-location"><img id="img0" src="images/bush.png" alt="Bush" onclick="check(0)"></div>
+        <div class="game-location"><img id="img1" src="images/bush.png" alt="Bush" onclick="check(1)"></div>
+        <div class="game-location"><img id="img2" src="images/bush.png" alt="Bush" onclick="check(2)"></div>
+        <div class="game-location"><img id="img3" src="images/bush.png" alt="Bush" onclick="check(3)"></div>
+        <div class="game-location"><img id="img4" src="images/bush.png" alt="Bush" onclick="check(4)"></div>
+        <div class="game-location"><img id="img5" src="images/bush.png" alt="Bush" onclick="check(5)"></div>
     </div>
 
     <!-- Row 2 -->
     <div class="game-row">
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
+        <div class="game-location"><img id="img6" src="images/bush.png" alt="Bush" onclick="check(6)"></div>
+        <div class="game-location"><img id="img7" src="images/bush.png" alt="Bush" onclick="check(7)"></div>
+        <div class="game-location"><img id="img8" src="images/bush.png" alt="Bush" onclick="check(8)"></div>
+        <div class="game-location"><img id="img9" src="images/bush.png" alt="Bush" onclick="check(9)"></div>
+        <div class="game-location"><img id="img10" src="images/bush.png" alt="Bush" onclick="check(10)"></div>
+        <div class="game-location"><img id="img11" src="images/bush.png" alt="Bush" onclick="check(11)"></div>
     </div>
 
     <!-- Row 3 -->
     <div class="game-row">
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
+        <div class="game-location"><img id="img12" src="images/bush.png" alt="Bush" onclick="check(12)"></div>
+        <div class="game-location"><img id="img13" src="images/bush.png" alt="Bush" onclick="check(13)"></div>
+        <div class="game-location"><img id="img14" src="images/bush.png" alt="Bush" onclick="check(14)"></div>
+        <div class="game-location"><img id="img15" src="images/bush.png" alt="Bush" onclick="check(15)"></div>
+        <div class="game-location"><img id="img16" src="images/bush.png" alt="Bush" onclick="check(16)"></div>
+        <div class="game-location"><img id="img17" src="images/bush.png" alt="Bush" onclick="check(17)"></div>
     </div>
 
     <!-- Row 4 -->
     <div class="game-row">
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
+        <div class="game-location"><img id="img18" src="images/bush.png" alt="Bush" onclick="check(18)"></div>
+        <div class="game-location"><img id="img19" src="images/bush.png" alt="Bush" onclick="check(19)"></div>
+        <div class="game-location"><img id="img20" src="images/bush.png" alt="Bush" onclick="check(20)"></div>
+        <div class="game-location"><img id="img21" src="images/bush.png" alt="Bush" onclick="check(21)"></div>
+        <div class="game-location"><img id="img22" src="images/bush.png" alt="Bush" onclick="check(22)"></div>
+        <div class="game-location"><img id="img23" src="images/bush.png" alt="Bush" onclick="check(23)"></div>
     </div>
 
     <!-- Row 5 -->
     <div class="game-row">
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
+        <div class="game-location"><img id="img24" src="images/bush.png" alt="Bush" onclick="check(24)"></div>
+        <div class="game-location"><img id="img25" src="images/bush.png" alt="Bush" onclick="check(25)"></div>
+        <div class="game-location"><img id="img26" src="images/bush.png" alt="Bush" onclick="check(26)"></div>
+        <div class="game-location"><img id="img27" src="images/bush.png" alt="Bush" onclick="check(27)"></div>
+        <div class="game-location"><img id="img28" src="images/bush.png" alt="Bush" onclick="check(28)"></div>
+        <div class="game-location"><img id="img29" src="images/bush.png" alt="Bush" onclick="check(29)"></div>
     </div>
 
     <!-- Row 6 -->
     <div class="game-row">
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
-        <div class="game-location"><img src="images/bush.png" alt="Bush"></div>
+        <div class="game-location"><img id="img30" src="images/bush.png" alt="Bush" onclick="check(30)"></div>
+        <div class="game-location"><img id="img31" src="images/bush.png" alt="Bush" onclick="check(31)"></div>
+        <div class="game-location"><img id="img32" src="images/bush.png" alt="Bush" onclick="check(32)"></div>
+        <div class="game-location"><img id="img33" src="images/bush.png" alt="Bush" onclick="check(33)"></div>
+        <div class="game-location"><img id="img34" src="images/bush.png" alt="Bush" onclick="check(34)"></div>
+        <div class="game-location"><img id="img35" src="images/bush.png" alt="Bush" onclick="check(35)"></div>
     </div>
+
+    <script>
+        // Array containing all 36 image IDs
+        let ids = [];
+
+        for (let i = 0; i < 36; i++) {
+            ids.push("img" + i);
+        }
+
+        // Game variables
+        let score = 0;
+        let locationsVisited = 0;
+        let lastLocation = 0;
+
+        let poisonLocation = 19;
+        let roseLocation = 14;
+        let lilyLocations = [3, 25];
+        let daisyLocations = [2, 5, 11, 20, 21];
+
+        let gameOver = false;
+        let revealedFlowers = [];
+
+        // Function to check clicked positions
+        function check(position) {
+
+            if (gameOver) {
+                return;
+            }
+
+            let imageId = ids[position];
+            let image = document.getElementById(imageId);
+
+            locationsVisited++;
+            lastLocation = position;
+
+            // Only award points once for each flower
+            if (!revealedFlowers.includes(position)) {
+
+                if (position === poisonLocation) {
+                    image.src = "images/poisonivy.png";
+                    image.alt = "Poison ivy";
+                    image.onclick = null;
+
+                    score -= 4;
+                    gameOver = true;
+                }
+
+                else if (position === roseLocation) {
+                    image.src = "images/rose.png";
+                    image.alt = "Rose";
+
+                    score += 4;
+                    revealedFlowers.push(position);
+                }
+
+                else if (lilyLocations.includes(position)) {
+                    image.src = "images/lily.png";
+                    image.alt = "Lily";
+
+                    score += 2;
+                    revealedFlowers.push(position);
+                }
+
+                else if (daisyLocations.includes(position)) {
+                    image.src = "images/daisy.png";
+                    image.alt = "Daisy";
+
+                    score += 1;
+                    revealedFlowers.push(position);
+                }
+
+                else {
+                    // No flower at this location
+                    image.onclick = null;
+                }
+            }
+
+            // Update number of locations checked
+            document.getElementById("locations").innerHTML =
+                "Number of locations checked is " +
+                locationsVisited + ".";
+
+            // Update score
+            document.getElementById("score").innerHTML =
+                "Score is " + score + ".";
+
+            // Display game over separately from help
+            if (gameOver) {
+                document.getElementById("gameStatus").innerHTML =
+                    "Game Over! You found poison ivy!";
+            }
+        }
+
+        // Function to display helpful hints
+        function help() {
+
+            let row = Math.floor(lastLocation / 6);
+            let col = lastLocation % 6;
+
+            // Four closest neighbors with wrap around
+            let neighbors = [
+                row * 6 + ((col + 5) % 6),
+                row * 6 + ((col + 1) % 6),
+                ((row + 5) % 6) * 6 + col,
+                ((row + 1) % 6) * 6 + col
+            ];
+
+            // Check if a daisy is nearby
+            for (let n of neighbors) {
+                if (daisyLocations.includes(n)) {
+                    document.getElementById("help").innerHTML =
+                        "Help report: cold";
+                    return "cold";
+                }
+            }
+
+            // Nine nearby locations without wrap around
+            let nearby = [];
+
+            for (let r = row - 1; r <= row + 1; r++) {
+                for (let c = col - 1; c <= col + 1; c++) {
+
+                    if (r >= 0 && r < 6 &&
+                        c >= 0 && c < 6) {
+
+                        nearby.push(r * 6 + c);
+                    }
+                }
+            }
+
+            // Check for nearby rose
+            if (nearby.includes(roseLocation)) {
+                document.getElementById("help").innerHTML =
+                    "Help report: hot";
+                return "hot";
+            }
+
+            // Check for nearby poison ivy
+            if (nearby.includes(poisonLocation)) {
+                document.getElementById("help").innerHTML =
+                    "Help report: watch out";
+                return "watch out";
+            }
+
+            // Otherwise return warm
+            document.getElementById("help").innerHTML =
+                "Help report: warm";
+
+            return "warm";
+        }
+    </script>
 
 </body>
 </html>
+

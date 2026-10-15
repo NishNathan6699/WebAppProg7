@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Nishanth Reflex Game</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef5ff;
+            margin: 25px;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        #target {
+            font-size: 22px;
+            margin: 20px 0;
+        }
+
+        #counter {
+            font-size: 35px;
+            color: darkgreen;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin-right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #go {
+            background-color: lightgreen;
+        }
+
+        #halt {
+            background-color: lightcoral;
+        }
+
+        .bonus {
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Nishanth reflexes</h1>
+
+    <p>
+        Press Go to start the countdown.
+        Press Halt as close to zero as possible,
+        but not after zero.
+    </p>
+
+    <div id="target">Your time</div>
+    <div id="counter">Count</div>
+
+    <button id="go" onclick="beginTime()">Go</button>
+    <button id="halt" onclick="recordTime()">Halt</button>
+
+    <div class="bonus">
+        <label>
+            <input type="checkbox" id="randomBonus">
+            Bonus: Random countdown (2 to 10 seconds)
+        </label>
+    </div>
+
+    <script>
+        let haltTime = undefined;
+        let running = false;
+        let countdownLength = 5;
+        let timerIds = [];
+
+        // Records when the Halt button was pressed
+        function recordTime() {
+
+            if (!running || haltTime !== undefined) {
+                return;
+            }
+
+            haltTime = Date.now();
+
+            console.log("Halt time:", haltTime);
+
+            document.getElementById("halt").disabled = true;
+        }
+
+        // Starts the countdown
+        function beginTime() {
+
+            // Clear previous timers
+            for (let timer of timerIds) {
+                clearTimeout(timer);
+            }
+
+            timerIds = [];
+
+            haltTime = undefined;
+            running = true;
+
+            document.getElementById("halt").disabled = false;
+
+            document.getElementById("target").innerHTML =
+                "Your time";
+
+            // Normal countdown is 5 seconds
+            countdownLength = 5;
+
+            // Bonus: Random countdown from 2 to 10
+            if (document.getElementById("randomBonus").checked) {
+                countdownLength =
+                    Math.floor(Math.random() * 9) + 2;
+            }
+
+            document.getElementById("counter").innerHTML =
+                "Count: " + countdownLength;
+
+            // Countdown using setTimeout
+            for (let i = 0; i <= countdownLength; i++) {
+
+                let timer = setTimeout(function () {
+
+                    document.getElementById("counter").innerHTML =
+                        "Count: " + i;
+
+                }, (countdownLength - i) * 1000);
+
+                timerIds.push(timer);
+            }
+
+            // Check final reaction time
+            let finalTimer = setTimeout(function () {
+
+                running = false;
+
+                let targetTime = Date.now();
+
+                if (haltTime === undefined) {
+
+                    document.getElementById("target").innerHTML =
+                        "Not soon enough";
+                }
+
+                else if (haltTime > targetTime) {
+
+                    document.getElementById("target").innerHTML =
+                        "Too late!";
+                }
+
+                else {
+
+                    let timeDifference = targetTime - haltTime;
+
+                    document.getElementById("target").innerHTML =
+                        "Time was " + timeDifference +
+                        " milliseconds before zero.";
+                }
+
+                document.getElementById("halt").disabled = true;
+
+            }, countdownLength * 1000);
+
+            timerIds.push(finalTimer);
+        }
+    </script>
+
+</body>
+</html>
